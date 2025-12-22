@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.List;
 
 public interface ToDoService {
-	List<ToDoResponse.ToDoSummary> getList(Long planId, UserDetails userDetails);
+	List<ToDoResponse.ToDoSummary> getList(Long planId);
 
 	ToDoResponse.ToDoDetail createToDo(List<ToDoRequest.PostTodo> request, Long planId);
 

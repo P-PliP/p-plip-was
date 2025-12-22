@@ -79,7 +79,7 @@ public class SecurityConfig {
 						.requestMatchers(HttpMethod.GET, "/notice/**").permitAll()
 						.requestMatchers("/error-code").permitAll()
 						.requestMatchers(HttpMethod.GET, "/trip/attraction/**").permitAll()
-						.requestMatchers("/trip/**").authenticated()
+						.requestMatchers(HttpMethod.GET, "/trip/plan/{planId}/todo").permitAll()
 						.anyRequest().authenticated());
 		http.addFilterAt(customLoginFilter(), UsernamePasswordAuthenticationFilter.class);
 		http.addFilterBefore(new JwtAuthenticationFilter(provider), UsernamePasswordAuthenticationFilter.class);

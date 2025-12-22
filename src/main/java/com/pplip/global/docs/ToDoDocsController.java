@@ -27,7 +27,7 @@ public interface ToDoDocsController {
      */
     @Operation(summary = "계획종속 TODO 페이징 조회")
     @ApiResponse(responseCode = "200", description = "성공")
-    CommonResponse<List<ToDoResponse.ToDoSummary>> getToDoList( Long planId, UserDetails userDetails);
+    CommonResponse<List<ToDoResponse.ToDoSummary>> getToDoList( Long planId);
 
     /**
      * TODO를 생성합니다.

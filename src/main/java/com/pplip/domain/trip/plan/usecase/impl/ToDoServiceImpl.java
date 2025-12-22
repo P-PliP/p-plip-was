@@ -33,9 +33,8 @@ public class ToDoServiceImpl implements ToDoService {
 	private final PlanDao planDao;
 
 	@Override
-	public List<ToDoResponse.ToDoSummary> getList(Long planId, UserDetails userDetails) {
-		Long userId = SecurityUtils.resolveUserId(userDetails);
-		return todoDao.findAllByPlanIdAndUserId(planId, userId);
+	public List<ToDoResponse.ToDoSummary> getList(Long planId) {
+		return todoDao.findAllByPlanId(planId);
 	}
 
 	@Override

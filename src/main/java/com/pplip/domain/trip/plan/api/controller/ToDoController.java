@@ -29,8 +29,8 @@ public class ToDoController implements ToDoDocsController {
 	 */
 	@Override
 	@GetMapping("/{planId}/todo")
-	public CommonResponse<List<ToDoResponse.ToDoSummary>> getToDoList(@PathVariable Long planId, @AuthenticationPrincipal UserDetails userDetails) {
-		return CommonResponse.success(SuccessCode.SUCCESS, toDoService.getList(planId, userDetails));
+	public CommonResponse<List<ToDoResponse.ToDoSummary>> getToDoList(@PathVariable Long planId) {
+		return CommonResponse.success(SuccessCode.SUCCESS, toDoService.getList(planId));
 	}
 
 	/**

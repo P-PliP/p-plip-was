@@ -112,5 +112,33 @@
         order by rand()
         limit 1;
     </select>
+    <!--     List<AttractionResponse.AttrList> findMainAttractions(@Param("latitude") Double latitude, @Param("longitude") Double longitude);  -->
 
+<!--    public static class AttrList {-->
+<!--    private Long no;-->
+<!--    private String title;-->
+<!--    private String thumbnail;-->
+<!--    private int reviewCnt;-->
+<!--    private String overview;-->
+<!--    private float distance;-->
+<!--    }-->
+    <select id="findMainAttractions" resultType="com.pplip.domain.trip.attraction.api.response.AttractionResponse$NearByAttraction">
+        select no,
+               title,
+               first_image1                                                           as thumbnail,
+               (select count(*) from review r where r.attraction_id = attractions.no) as reviewCnt,
+               overview,
+               ST_Distance_Sphere(
+                       POINT(longitude, latitude),
+                       POINT(#{longitude}, #{latitude})
+               ) AS distance
+        from attractions
+        where ST_Distance_Sphere(
+                  POINT(longitude, latitude),
+                  POINT(#{longitude}, #{latitude})
+              ) &lt;= 3000
+        ORDER BY reviewCnt DESC, distance asc
+        LIMIT 10;
+
+    </select>
 </mapper>

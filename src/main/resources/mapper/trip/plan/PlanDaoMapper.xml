@@ -13,7 +13,8 @@
             p.end_date,
             p.created_at,
             COALESCE(
-                    (COUNT(CASE WHEN t.will_end_at &lt; NOW() THEN 1 END) / NULLIF(COUNT(t.id), 0)) * 100,
+                    (COUNT(CASE WHEN t.will_end_at &lt; DATE_ADD(NOW(), INTERVAL 9 HOUR) THEN 1 END) * 100.0)
+                        / NULLIF(COUNT(t.id), 0),
                     0
             ) AS completedRate
         FROM plan p

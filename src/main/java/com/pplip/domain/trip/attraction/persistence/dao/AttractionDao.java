@@ -46,4 +46,6 @@ public interface AttractionDao {
     Optional<AttractionResponse.Details> findRandomFirstBySidoGuguns(AttractionRequest.SuggestBySidoGuguns search);
 
     Attraction findRandom(@Param("sidoCode") int sidoCode, @Param("gugunCode") int gugunCode);
+
+    List<AttractionResponse.NearByAttraction> findMainAttractions(@Param("latitude") Double latitude, @Param("longitude") Double longitude);
 }

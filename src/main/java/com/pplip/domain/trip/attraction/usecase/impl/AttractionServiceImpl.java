@@ -91,4 +91,9 @@ public class AttractionServiceImpl implements AttractionService {
 
 		return null;
 	}
+
+	@Override
+	public List<AttractionResponse.NearByAttraction> getMainAttractions(Double latitude, Double longitude) {
+		return attractionDao.findMainAttractions(latitude, longitude);
+	}
 }

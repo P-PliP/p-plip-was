@@ -95,4 +95,17 @@ public class AttractionResponse {
 
         private int reviewCnt;
     }
+
+    @Data
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+	public static class NearByAttraction {
+	    private Long no;
+        private String title;
+        private String thumbnail;
+        private int reviewCnt;
+        private String overview;
+        private float distance;
+    }
 }

@@ -57,6 +57,12 @@ public class AttractionController implements AttractionDocsController {
 		return CommonResponse.success(SuccessCode.SUCCESS, attractionService.findAllBySearch(search, pageRequest));
 	}
 
+	@GetMapping
+	public CommonResponse<List<AttractionResponse.NearByAttraction>> getMainAttractions(@RequestParam Double latitude,
+	                                                                                    @RequestParam Double longitude) {
+		return CommonResponse.success(SuccessCode.SUCCESS, attractionService.getMainAttractions(latitude, longitude));
+	}
+
 	/**
 	 * 사용자의 여행 계획을 기반으로 AI를 사용하여 관광지를 추천합니다.
 	 *

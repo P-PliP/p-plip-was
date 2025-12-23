@@ -7,6 +7,7 @@ import com.pplip.domain.auth.filter.JwtExceptionFilter;
 import com.pplip.domain.auth.filter.handler.CustomLoginFailureHandler;
 import com.pplip.domain.auth.filter.handler.CustomLoginSuccessHandler;
 import com.pplip.domain.auth.jwt.JwtUtil;
+import com.pplip.domain.auth.persistence.entity.Role;
 import com.pplip.domain.auth.provider.JwtAuthenticationProvider;
 import com.pplip.global.cache.usecase.RefreshTokenCacheService;
 import lombok.RequiredArgsConstructor;
@@ -77,6 +78,7 @@ public class SecurityConfig {
 						.requestMatchers(HttpMethod.GET, "/freeboard/**").permitAll()
 						.requestMatchers(HttpMethod.GET, "/notice").permitAll()
 						.requestMatchers(HttpMethod.GET, "/notice/**").permitAll()
+						.requestMatchers("/notice/**").hasAnyAuthority(Role.ADMIN.getAuthority())
 						.requestMatchers("/error-code").permitAll()
 						.requestMatchers(HttpMethod.GET, "/trip/attraction/**").permitAll()
 						.requestMatchers(HttpMethod.GET, "/trip/plan/{planId}/todo").permitAll()
